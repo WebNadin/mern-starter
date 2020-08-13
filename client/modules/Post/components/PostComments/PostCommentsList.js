@@ -1,11 +1,12 @@
 import React from 'react';
 
-function PostCommentsList() {
+export const PostCommentsList = () => {
   return (
-    <div className="listView">
-      test PostCommentsList
+    <div>
+      <span>test span</span>
+      <button>
+        Increment counter
+      </button>
     </div>
   );
-}
-
-export default PostCommentsList;
+};

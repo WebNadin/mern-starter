@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Import Components
-import PostCommentsList from './PostCommentsList';
+import { PostCommentsList } from './PostCommentsList';
 import PostAddCommentForm from './PostAddCommentForm';
 
 function PostComments() {

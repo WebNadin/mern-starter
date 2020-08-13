@@ -1,4 +1,4 @@
-import { CREATE_COMMENT, REQUEST_COMMENTS, SHOW_LOADER, HIDE_LOADER } from './types';
+import { CREATE_COMMENT, SHOW_LOADER, HIDE_LOADER, FETCH_COMMENTS } from './types';
 
 export function createComment(postId) {
   return {
@@ -20,7 +20,11 @@ export function hideLoader() {
 }
 
 export function fetchComments() {
-  return {
-    type: REQUEST_COMMENTS,
+  return async dispatch => {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5');
+    const json = await response.json();
+    setTimeout(() => {
+      dispatch({ type: FETCH_COMMENTS, payload: json });
+    }, 500);
   };
 }

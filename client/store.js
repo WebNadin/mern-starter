@@ -4,6 +4,8 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
+import createSagaMiddleware from 'redux-saga';
+import { sagaWatcher } from './modules/Post/components/PostComments/sagas';
 
 let DevTools;
 if (process.env.NODE_ENV === 'development') {
@@ -11,10 +13,12 @@ if (process.env.NODE_ENV === 'development') {
   DevTools = require('./modules/App/components/DevTools').default;
 }
 
+const sagaMiddleware = createSagaMiddleware();
+
 export function configureStore(initialState = {}) {
   // Middleware and store enhancers
   const enhancers = [
-    applyMiddleware(thunk),
+    applyMiddleware(thunk, sagaMiddleware),
   ];
 
   if (process.env.CLIENT && process.env.NODE_ENV === 'development') {
@@ -32,6 +36,6 @@ export function configureStore(initialState = {}) {
       store.replaceReducer(nextReducer);
     });
   }
-
+  sagaMiddleware.run(sagaWatcher);
   return store;
 }

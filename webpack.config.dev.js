@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var cssnext = require('postcss-cssnext');
 var postcssFocus = require('postcss-focus');
 var postcssReporter = require('postcss-reporter');
+require('babel-polyfill');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -13,6 +14,7 @@ module.exports = {
       'webpack/hot/only-dev-server',
       'react-hot-loader/patch',
       './client/index.js',
+      'babel-polyfill',
     ],
     vendor: [
       'react',

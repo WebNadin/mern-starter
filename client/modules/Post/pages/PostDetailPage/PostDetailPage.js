@@ -6,7 +6,7 @@ import { FormattedMessage } from 'react-intl';
 
 // Import Components
 import CommentForm from '../../../Comment/components/CommentForm';
-import { Comments } from '../../../Comment/components/Comments';
+import Comments from '../../../Comment/components/Comments';
 
 // Import Style
 import styles from '../../components/PostListItem/PostListItem.css';
@@ -31,7 +31,7 @@ export function PostDetailPage(props) {
           <CommentForm />
         </div>
         <div className="comments__item">
-          <Comments comments={[]} />
+          <Comments />
         </div>
       </div>
     </div>

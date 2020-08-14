@@ -4,6 +4,10 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 
+// Import Components
+import CommentForm from '../../../Comment/components/CommentForm';
+import { Comments } from '../../../Comment/components/Comments';
+
 // Import Style
 import styles from '../../components/PostListItem/PostListItem.css';
 
@@ -21,6 +25,14 @@ export function PostDetailPage(props) {
         <h3 className={styles['post-title']}>{props.post.title}</h3>
         <p className={styles['author-name']}><FormattedMessage id="by" /> {props.post.name}</p>
         <p className={styles['post-desc']}>{props.post.content}</p>
+      </div>
+      <div className="comments">
+        <div className="comments__item">
+          <CommentForm />
+        </div>
+        <div className="comments__item">
+          <Comments comments={[]} />
+        </div>
       </div>
     </div>
   );
